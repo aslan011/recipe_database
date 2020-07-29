@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') Meal name:
+      input(type='text', placeholder='Meal name' name='name')
+      label(for='category') Description:
+      input(type='text', placeholder='Little description' name='category')
+    button.btn.btn-primary(type='submit') Create
+
+  if errors 
+   ul
+    for error in errors
+     li!= error.msg

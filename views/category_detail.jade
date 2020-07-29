@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= category.name
+  ul
+    each meal in category_meals
+      li
+        a(href=meal.url) #{meal.name}
+        p #{meal.description}
+    else
+      li No categories
+  form(method='POST' action='')
+    h2 Add new meal
+    div.form-group
+      label(for='name') Meal name:
+      input(type='text', placeholder='Meal name' name='name')
+      label(for='description') Description:
+      input(type='text', placeholder='Description' name='description' id=category._id)
+      button.btn.btn-primary(type='submit') Add

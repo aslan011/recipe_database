@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  ul
+    each category in index
+      li
+        a(href=category.url) #{category.name}
+    else
+      li No categories
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') New category: 
+      input(type='text', placeholder='Category' name='name')
+      button.btn.btn-primary(type='submit') Create
