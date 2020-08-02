@@ -5,10 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
-
+const dbURL = require("./secret")
+console.log(dbURL)
 var app = express();
 
-const mongoDB = 'mongodb+srv://localLib:localLIB@cluster0.3iud4.mongodb.net/vegan_food?retryWrites=true&w=majority';
+const mongoDB = String(dbURL);
 mongoose.connect(mongoDB, { useNewUrlParser: true })
   .then((result) => console.log("connected to db"))
 
