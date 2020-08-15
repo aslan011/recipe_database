@@ -10,8 +10,20 @@ exports.meal_detail = function(req,res,next) {
         });
 }
 
+exports.meal_create_get = function(req, res, next) {
+    res.render('meal_form');
+};
+
+exports.meal_update_get = function(req, res, next) {
+    Meal.findById(req.params.meal)
+        .exec(function (err, meal_details) {
+            if (err) { return next(err); }
+            //Successful, so render
+            res.render('update_meal', { meal: meal_details });
+        });
+};
+
 exports.meal_create_post = function(req, res, next) {
-    console.log(req.params.category)
     const meal = new Meal(
         { name: req.body.name,
           description: req.body.description,
@@ -23,12 +35,41 @@ exports.meal_create_post = function(req, res, next) {
   
              if (found_meal) {
                // Category exists, redirect to its detail page.
-               res.redirect(found_category.url);
+               res.redirect(found_meal.url);
              } else {
                  meal.save(function (err) {
                     if (err) {return next(err); }
-                    res.redirect(meal.url);
+                    res.redirect('/' + req.params.category);
                  })
              }
     })
+}
+
+exports.meal_update_post = function(req, res, next) {
+    Meal.findByIdAndUpdate(
+        { _id: req.params.meal },
+            { 
+                description: req.body.description,
+                name: req.body.name 
+            },
+        function(err, result) {
+          if (err) {
+            res.send(err);
+          } else {
+            res.redirect('/');
+          }
+        }
+      );
+}
+
+exports.meal_delete_post= function(req, res, next) {
+    Meal.findByIdAndRemove(req.params.meal,
+        function(err, result) {
+          if (err) {
+            res.send(err);
+          } else {
+            res.redirect('/');
+          }
+        }
+      );
 }

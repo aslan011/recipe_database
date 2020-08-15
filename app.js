@@ -6,11 +6,10 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 const dbURL = require("./secret")
-console.log(dbURL)
 var app = express();
 
 const mongoDB = String(dbURL);
-mongoose.connect(mongoDB, { useNewUrlParser: true })
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
   .then((result) => console.log("connected to db"))
 
 const db = mongoose.connection

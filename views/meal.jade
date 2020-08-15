@@ -3,3 +3,7 @@ extends layout
 block content
   h4= meal.name
   p= meal.description
+  p
+    a(href= meal.url + '/update') Edit meal
+  form(method='POST' action='')
+    button(type='submit') Delete meal

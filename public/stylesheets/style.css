@@ -1,8 +1,53 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: "Indie Flower", cursive;
 }
 
 a {
-  color: #00B7FF;
+  color: #304429;
+  font-size: 24pt;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+.mealName {
+  font-weight: bold;
+}
+
+.newMeal {
+  background-color: rgb(204, 236, 226);
+  width: 20%;
+  border-radius: 30px;
+  margin: 0 auto;
+}
+
+.home {
+  position: absolute;
+  margin: 10px;
+  left: 0;
+  top: 0;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  font-family: "Indie Flower", cursive;
+}
+
+input {
+  border-radius: 5px;
+  padding: 5px;
+  background-color: transparent;
+}
+
+.container {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #5baf5f8a;
+  margin: 0 auto;
+  max-width: 70%;
+  text-align: center;
 }
